@@ -1,3 +1,4 @@
 hello world!
 this is example for git
-create new branch
+that is for branch test.
+that is for learning
