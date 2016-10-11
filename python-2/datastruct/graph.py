@@ -25,11 +25,11 @@ if __name__ == "__main__":
               'G':['E']
               }
         r = searchGraph(Graph,'A','D')
-        print "A to D"
+        print("A to D")
         for i in r:
-            print i
+            print(i)
 
         r=searchGraph(Graph,'A','E')
-        print "A to E"
+        print("A to E")
         for i in r:
-            print i
+            print(i)

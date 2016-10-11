@@ -34,12 +34,12 @@ while 1:
     if results[0][1] == select.POLLIN:
       data = s.recv(4096)
       if not len(data):
-        print "Remote end closed connect"
+        print("Remote end closed connect")
         break
       sys.stdout.write("\rReceived:" + data)
       sys.stdout.flush()
     else:
-      print "\rproblem occurred ; exiting"
+      print("\rproblem occurred ; exiting")
       sys.exit(0)
 
 spin()

@@ -9,7 +9,7 @@ reqobj=DNS.Request()
 
 answerobj=reqobj.req(name=query,qtype=DNS.Type.ANY)
 if not len(answerobj.answers):
-  print "not find"
+  print("not find")
 for i in answerobj.answers:
-  print "%-5s %s " % (i['typename'],i['data'])
+  print("%-5s %s " % (i['typename'],i['data']))
 

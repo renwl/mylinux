@@ -35,9 +35,9 @@ if __name__ == "__main__":
     queue=Queue()
     for i in range(10):
         queue.In(i)
-    print queue.End()
+    print(queue.End())
 
     for i in range(10):
-        print queue.Out()
+        print(queue.Out())
         
             

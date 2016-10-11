@@ -6,19 +6,19 @@ ls = os.linesep
 
 #get filename
 while True:
-    fname = raw_input()
+    fname = input()
     if os.path.exists(fname):
-        print "ERROR: '%s' already exists " %fname
+        print("ERROR: '%s' already exists " %fname)
     else:
         break
 
 #get file content lines
 all = []
-print "\n Enter lines:('.' by itself to quit)\n"
+print("\n Enter lines:('.' by itself to quit)\n")
 
 #loop until user terminates input
 while True:
-    entry = raw_input('>')
+    entry = input('>')
     if entry == '.':
         break
     else:
@@ -28,5 +28,5 @@ while True:
 fobj = open(fname,'w')
 fobj.writelines(['%s%s' %(x,ls) for x in all])
 fobj.close()
-print 'DONE!'
+print('DONE!')
 

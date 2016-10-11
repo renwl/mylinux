@@ -5,10 +5,10 @@ from os        import makedirs,unlink,sep
 from os.path   import dirname,exists,isdir,splitext
 from string    import replace,find,lower
 from htmllib   import HTMLParser
-from urllib    import urlretrieve
-from urlparse  import urlparse,urljoin
+from urllib.request    import urlretrieve
+from urllib.parse  import urlparse,urljoin
 from formatter import DumbWriter,AbstractFormatter
-from cStringIO import StringIO
+from io import StringIO
 
 class Retriever(object):#下载网页类
 
@@ -60,35 +60,35 @@ class Crawler(object): #管理类,管理整个爬行过程
         r = Retriever(url)
         retval = r.download()
         if retval[0] == "*": #错误，不解析
-            print retval,"--- skipping parse"
+            print(retval,"--- skipping parse")
             return
         Crawler.count += 1
-        print '\n(',Crawler.count,')'
-        print "URL:",url
-        print "FILE:",retval[0]
+        print('\n(',Crawler.count,')')
+        print("URL:",url)
+        print("FILE:",retval[0])
         self.seen.append(url)
 
         links = r.parseAndGetLinks() #得到链接
         for eachLink in links:
             if eachLink[:4] != "http" and find(eachLink,"://") == -1:
                 eachLink = urljoin(url,eachLink)
-            print "* ",eachLink
+            print("* ",eachLink)
             
             if find(lower(eachLink),"mailto:") != -1: #过滤邮箱链接 
-                print "--- discarded,mailto link"
+                print("--- discarded,mailto link")
                 continue
                 
             if eachLink not in self.seen:
                 if find(eachLink,self.dom) == -1:
-                    print "---discarded,not in domain"
+                    print("---discarded,not in domain")
                 else:
                     if eachLink not in self.q:
                         self.q.append(eachLink)
-                        print "---new,add to Q"
+                        print("---new,add to Q")
                     else:
-                        print "---discarded,already in Q"
+                        print("---discarded,already in Q")
             else:
-                print "---discarded, arlready processed"
+                print("---discarded, arlready processed")
 					
     def go(self):  #在队列里处理链接，启动
         while self.q:
@@ -101,7 +101,7 @@ def  main():
         
     else:
         try:
-            url = raw_input("Enter starting URL:")
+            url = input("Enter starting URL:")
         except (KeyboardInterrupt,EOFError):
             url = ""
             

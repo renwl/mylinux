@@ -6,5 +6,5 @@ class Rand(object):
         self.data = seq
     def _iter_(self):
         return self
-    def next(self):
+    def __next__(self):
         return choice(self.data)

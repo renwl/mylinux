@@ -1,12 +1,12 @@
 #!/usr/bin env python
 
-import sys,urllib2
+import sys,urllib.request,urllib.error,urllib.parse
 
-req=urllib2.Request(sys.argv[1])
-fd=urllib2.urlopen(req)
+req=urllib.request.Request(sys.argv[1])
+fd=urllib.request.urlopen(req)
 
-print "Retrieved",fd.geturl()
+print("Retrieved",fd.geturl())
 info=fd.info()
 
-for key,value in info.items():
-  print "%s = %s " % ( key,value)
+for key,value in list(info.items()):
+  print("%s = %s " % ( key,value))

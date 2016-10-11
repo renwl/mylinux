@@ -23,7 +23,7 @@ while 1:
   clientsock.settimeout(5)
 
   try:
-    print "get connect from",clientsock.getpeername()
+    print("get connect from",clientsock.getpeername())
     while 1:
       data=clientsock.recv(4096)
       if not len(data):

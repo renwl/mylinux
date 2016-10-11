@@ -48,12 +48,12 @@ if  __name__ == "__main__":
 
     for i in range(10):
         stack.push(i)
-    print stack.Top()
+    print(stack.Top())
 
     for i in range(10):
-       print stack.pop()
+       print(stack.pop())
 
     stack.empty()
-    print stack.Top()
+    print(stack.Top())
     
             

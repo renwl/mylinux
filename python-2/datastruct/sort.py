@@ -13,7 +13,7 @@ class BTree:
         return self.right
 
     def show(self):
-        print self.data
+        print(self.data)
 
 def inorder(node):
     if node.data:
@@ -53,9 +53,9 @@ if __name__ == "__main__":
     for i in range(1,len(l)):
         insert(Root,l[i])
 
-    print "1---->10"
+    print("1---->10")
     inorder(Root)
-    print "10--->1"
+    print("10--->1")
     rinorder(Root)
 
 

@@ -3,24 +3,24 @@ db = {}
 def newuser():
     prompt = "login desired:"
     while True:
-        name = raw_input(prompt)
-        if db.has_key(name):
+        name = input(prompt)
+        if name in db:
             prompt = "name taken,try again: "
             continue
         else:
             break
-    pwd = raw_input("passwd:")
+    pwd = input("passwd:")
     db[name]= pwd 
-    print "regeisted oK!\n"
+    print("regeisted oK!\n")
 
 def olduser():
-    name = raw_input("login:")
-    pwd = raw_input("passwd:")
+    name = input("login:")
+    pwd = input("passwd:")
     passwd = db.get(name)
     if passwd == pwd:
-        print "welcome back," ,name
+        print("welcome back," ,name)
     else:
-        print "login incorrect"
+        print("login incorrect")
 
 def showmenu():
     prompt = """
@@ -34,12 +34,12 @@ def showmenu():
         chosen = False
         while not chosen:
             try:
-                choice = raw_input(prompt).strip()[0].lower()
+                choice = input(prompt).strip()[0].lower()
             except(EOFError,KeyboardInterrupt):
                 choice = "q"
-            print "\n you picked [%s]" % choice
+            print("\n you picked [%s]" % choice)
             if choice not in "nlq":
-                print "invalid option, try again"
+                print("invalid option, try again")
             else:
                 chosen = True
 

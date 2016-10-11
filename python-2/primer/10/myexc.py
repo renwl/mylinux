@@ -24,7 +24,7 @@ def fileAargs(file,mode,agrs):
         'access' in dir(os):
         perms = ''
         perms = {'r':os.R_OK,'w':os.W_OK,'x':os.X_OK}
-        pkeys = permd.keys()
+        pkeys = list(permd.keys())
         pkeys.sort()
         pkeys.reverse()
 
@@ -51,18 +51,17 @@ def fileAargs(file,mode,agrs):
 def myconnnect(sock,host,port):
     try:
         sock.connect((hosy,port))
-    except socket.error,args:
+    except socket.error as args:
         myargs = updArgs(args)
         if len(myargs) == 1:
             myargs = (errno.ENXIO,myargs[0])
 
-        raise NetworkError,\
-              updArgs(myargs,host +":" + str(port))
+        raise NetworkError(updArgs(myargs,host +":" + str(port)))
 def myopen(file,mode ="r"):
     try:
         fo = open(file,mode)
-    except IOError,args:
-        raise FileError,fileArgs(file,mode,args)
+    except IOError as args:
+        raise FileError(fileArgs(file,mode,args))
     return fo
 
 def testfile():
@@ -70,28 +69,28 @@ def testfile():
     f = open(file,"w")
     f.close()
 
-    for eachTest in ((0,"r"),(0100,"r"), \
-        (0400,"w"),(0500,"w")):
+    for eachTest in ((0,"r"),(0o100,"r"), \
+        (0o400,"w"),(0o500,"w")):
         try:
             os.chmod(file,eachTest[0])
             f=myopen(file,eachTest[1])
 
-        except FileError,args:
-            print "%s: %s" % \
-                  (args.__class__.__name__,args)
+        except FileError as args:
+            print("%s: %s" % \
+                  (args.__class__.__name__,args))
         else:
-            print file,"open ok..perm ignored"
+            print(file,"open ok..perm ignored")
             f.close()
-        os.chmod(file,0777)
+        os.chmod(file,0o777)
         os.unlink(file)
 def testnet():
     s = socket.socket(socket.AF_INET.socket.SOCK_STREAM)
     for eachHost in ("deli","www"):
         try:
             myconnect(s,"deli",8080)
-        except NetworkError,args:
-            print "%s:%s" %\
-                  (args.__class__.__name__,args)
+        except NetworkError as args:
+            print("%s:%s" %\
+                  (args.__class__.__name__,args))
 if __name__ == "__main__":
     testfile()
     testnet()

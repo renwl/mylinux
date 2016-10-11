@@ -10,7 +10,7 @@ class Time(object):
         return self.__data
     def gettimeval(self,t_type):
         if not isinstance(t_type,str) or t_type[0] not in "cma":
-            raise TypeError," arg c m a"
+            raise TypeError(" arg c m a")
         return getattr(self,"_%s__%stime" % (self.__class__.__name__,t_type[0]))
     def gettimestr(self,t_type):
         return ctime(self.gettimeval(t_type))

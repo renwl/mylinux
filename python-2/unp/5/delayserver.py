@@ -22,7 +22,7 @@ while 1:
     continue
 
   try:
-    print "get connect from",clientsock.getpeername()
+    print("get connect from",clientsock.getpeername())
     while 1:
       try:
         clientsock.sendall(time.asctime() + "\n")

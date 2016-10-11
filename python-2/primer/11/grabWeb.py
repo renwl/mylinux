@@ -1,5 +1,5 @@
 
-from urllib import urlretrieve
+from urllib.request import urlretrieve
 
 def  firstNoBlank(lines):
     for eachLine in lines:
@@ -12,8 +12,8 @@ def firstLast(webpage):
     f = open(webpage)
     lines= f.readlines()
     f.close()
-    print firstNoBlank(lines),lines.reverse()
-    print firstNoBlank(lines),
+    print(firstNoBlank(lines),lines.reverse())
+    print(firstNoBlank(lines), end=' ')
 
 def download(url = "http://www.cqupt.edu.cn",process=firstLast):
     try:

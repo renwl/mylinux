@@ -9,13 +9,13 @@ tcpCliSock = socket(AF_INET,SOCK_STREAM)
 tcpCliSock.connect(ADDR)
 
 while True:
-    data = raw_input(">")
+    data = input(">")
     if not data:
         break
     tcpCliSock.send(data)
     data = tcpCliSock.recv(BUFSIZ)
     if not data:
         break
-    print data
+    print(data)
 
 tcpCliSock.close()

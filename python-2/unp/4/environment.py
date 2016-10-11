@@ -7,11 +7,11 @@ def getipaddrs(hostname):
   return [x[4][0] for x in s]
 
 hostname=socket.gethostname()
-print "Host name:",hostname
+print("Host name:",hostname)
 
-print "full-name:",socket.getfqdn(hostname)
+print("full-name:",socket.getfqdn(hostname))
 try:
-  print "IP address:",", ".join(getipaddrs(hostname))
-except socket.gaierror,e:
-  print "can not get ip address",e
+  print("IP address:",", ".join(getipaddrs(hostname)))
+except socket.gaierror as e:
+  print("can not get ip address",e)
 

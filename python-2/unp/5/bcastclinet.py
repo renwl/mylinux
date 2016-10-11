@@ -14,7 +14,7 @@ s.bind((host,port))
 while 1:
   try:
     message,address=s.recvfrom(8192)
-    print "Got data from",addrrss
+    print("Got data from",addrrss)
     s.sendto("I am here",address)
   except (KeyboardInterrupt,SystemExit):
     raise

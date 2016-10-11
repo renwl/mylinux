@@ -20,7 +20,7 @@ while bytewritten < len(data):
 
 s.shutdown(1)
 
-print "All data sent"
+print("All data sent")
 while 1:
   buf=s.recv(1024)
   if not len(buf):

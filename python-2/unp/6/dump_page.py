@@ -1,9 +1,9 @@
 #!/usr/bin env python
 
-import sys,urllib2
+import sys,urllib.request,urllib.error,urllib.parse
 
-req=urllib2.Request(sys.argv[1])
-fd=urllib2.urlopen(req)
+req=urllib.request.Request(sys.argv[1])
+fd=urllib.request.urlopen(req)
 
 while 1:
   data=fd.read(1024)

@@ -10,7 +10,7 @@ s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 s.bind((host,porr))
 s.listen(1)
 
-print "server is runing on port %d" % port
+print("server is runing on port %d" % port)
 
 while 1:
   clientsock,clientaddr=s.accept()

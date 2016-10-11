@@ -17,9 +17,9 @@ def printReplace_re(srcStr,word):
     return srcStr
 
 def main():    
-    srcStr = raw_input(u"请输入一个字符串：")
+    srcStr = input("请输入一个字符串：")
     destStr=printReplace_re(srcStr,'i')
-    print destStr
+    print(destStr)
 
 
 if __name__ == "__main__":

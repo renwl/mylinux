@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-import urllib,sys
+import urllib.request, urllib.parse, urllib.error,sys
 
-f=urllib.urlopen(sys.argv[1])
+f=urllib.request.urlopen(sys.argv[1])
 
 while True:
   buf = f.read(2048)

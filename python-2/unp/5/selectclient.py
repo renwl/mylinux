@@ -30,14 +30,14 @@ while 1:
   if len(infds):
     data=s.recv(4096)
   if not len(data):
-    print "\rRemote end closed connection; exiting"
+    print("\rRemote end closed connection; exiting")
     break
 
   sys.stdout.write("\rRecived: " + data)
   sys.stdout.flush()
 
   if len(errfds):
-    print "\r problem occurred; exiting"
+    print("\r problem occurred; exiting")
     sys.exit(0)
 
 spin()

@@ -1,7 +1,7 @@
 #!/usr/bin env python
 #!--coding: utf-8--
 
-import syslog,StringIO,sys,os,traceback
+import syslog,io,sys,os,traceback
 
 def logexception(includetraceback=0):
   exctype,exception,exctraceback=sys.exc_info()
@@ -11,7 +11,7 @@ def logexception(includetraceback=0):
   if not includetraceback:
     syslog.syslog(syslog.LOG_ERR,"%s: %s" % (excclass,message))
   else:
-    excfd=StringIO.StringIO()
+    excfd=io.StringIO()
     traceback.print_exception(exctype,exception,exctraceback,None,excfd)
 
     for line in excfd.getvalue().split("\n"):
@@ -25,12 +25,12 @@ def initsyslog():
 
 initsyslog()  
 try:
-  raise RuntimeError, "Exception 1"
+  raise RuntimeError("Exception 1")
 except:
   logexception(0)
 
 try:
-  raise RuntimeError, "Exception 2"
+  raise RuntimeError("Exception 2")
 except:
   logexception(1)
 

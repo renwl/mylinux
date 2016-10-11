@@ -6,14 +6,14 @@ try:
 
   s=socket.gethostbyaddr(sys.argv[1])
 
-  print "hostname:"
-  print " "+ s[0]
+  print("hostname:")
+  print(" "+ s[0])
 
-  print "\nAddress:"
+  print("\nAddress:")
   for i in s[2]:
-    print " " + i
+    print(" " + i)
 
-except socket.herror,e:
-  print "can not look up name:",e
+except socket.herror as e:
+  print("can not look up name:",e)
 
 

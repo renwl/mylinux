@@ -17,8 +17,8 @@ class NumStr(object):
         if isinstance(num,int):
             return self.__class__(self.__num *num,self.__string *num)
         else:
-            raise  TypeError,"__num__ error"
-    def __nonzero__(self):
+            raise  TypeError("__num__ error")
+    def __bool__(self):
         return self.__num or len(self.__string)
     def __norm_cval(self,cmpres):
         return cmp(cmpres,0)

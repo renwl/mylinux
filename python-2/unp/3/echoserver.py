@@ -21,7 +21,7 @@ while 1:
     continue
 
   try:
-    print "Got connection from " ,clientsock.getpeername()
+    print("Got connection from " ,clientsock.getpeername())
     while 1:
       data= clientsock.recv(4096)
       if not len(data):

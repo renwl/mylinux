@@ -13,7 +13,7 @@ class BTree:
         return self.right
 
     def show(self):
-        print self.data
+        print(self.data)
 
 def preorder(node):
     if node.data:
@@ -50,13 +50,13 @@ if __name__ == "__main__":
     B=Root.insertRight("B")
     E=B.insertRight("E")
 
-    print "pre-traversal"
+    print("pre-traversal")
     preorder(Root)
 
-    print "in-traversal"
+    print("in-traversal")
     inorder(Root)
 
-    print "post-traversal"
+    print("post-traversal")
     postorder(Root)
 
         

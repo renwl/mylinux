@@ -12,9 +12,9 @@ tcpSerSock.bind(ADDR)
 tcpSerSock.listen(5)
 
 while True:
-    print "waiting from connection..."
+    print("waiting from connection...")
     tcpCliSock,addr = tcpSerSock.accept()
-    print "...connected from :",addr
+    print("...connected from :",addr)
 
     while True:
         data = tcpCliSock.recv(BUFSIZ)

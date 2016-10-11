@@ -5,7 +5,7 @@ An example for unicode string
 CODEC = "utf-8"
 FILE = "unicode.txt"
 
-hello = u"hhhh\n"
+hello = "hhhh\n"
 byte = hello.encode(CODEC)
 f = open(FILE,"w")
 f.write(byte)
@@ -16,5 +16,5 @@ byte = f.read()
 f.close()
 
 hello = byte.decode(CODEC)
-print hello
-raw_input()
+print(hello)
+input()

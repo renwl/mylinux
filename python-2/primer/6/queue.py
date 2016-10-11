@@ -1,14 +1,14 @@
 
 queue = []
 def enQ():
-    queue.append(raw_input("enter new string:").strip())
+    queue.append(input("enter new string:").strip())
 def deQ():
     if len(queue) == 0:
-        print "empty queue\n"
+        print("empty queue\n")
     else:
-        print 'Removed![',`queue.pop()`,']'
+        print('Removed![',repr(queue.pop()),']')
 def viewQ():
-    print queue
+    print(queue)
 
 CMDS = {'e': enQ,'d':deQ,'v':viewQ}
 def showmenu():
@@ -22,12 +22,12 @@ def showmenu():
     while True:
         while True:
             try:
-                 choice = raw_input(pr).strip()[0].lower()
+                 choice = input(pr).strip()[0].lower()
             except (EOFError,KeyboardInterpt,IndexError):
                  choice = "q"
-            print "\nYou picked:[%s]" % choice
+            print("\nYou picked:[%s]" % choice)
             if choice not in "devq":
-                 print "error,try again"
+                 print("error,try again")
             else:
                  break
             if choice == "q":

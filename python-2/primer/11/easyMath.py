@@ -14,22 +14,22 @@ def doprob():
     oops =0
     while True:
         try:
-            if int(raw_input(pr)) == ans:
-                print "corrent"
+            if int(input(pr)) == ans:
+                print("corrent")
                 break
             if oops == MAXTRIES:
-                print "answer \n %s%d" %(pr,ans)
+                print("answer \n %s%d" %(pr,ans))
             else:
-                print "incorrent...try again"
+                print("incorrent...try again")
                 oops += 1
         except (KeyboardInterrupt, EOFError,ValueError):
-            print "invalid input ... try again"
+            print("invalid input ... try again")
 
 def main():
     while True:
         doprob()
         try:
-            opt= raw_input("Again?[y]".lower())
+            opt= input("Again?[y]".lower())
             if opt and opt[0] == "n":
                 break
         except (KeyboardInterrupt,EOFError):

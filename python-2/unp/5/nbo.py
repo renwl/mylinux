@@ -17,7 +17,7 @@ def ntohl(data):
 def sendstring(data):
   return htonl(len(data)) + data
 
-print "Enter a string:"
+print("Enter a string:")
 str=sys.stdin.readline().rstrip()
 
-print repr(sendstring(str))
+print(repr(sendstring(str)))

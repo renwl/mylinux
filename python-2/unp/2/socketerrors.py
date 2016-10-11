@@ -8,8 +8,8 @@ filename=sys.argv[3]
 
 try:
   s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-except socket.error,e:
-  print "strange erroe create socket %s" % e
+except socket.error as e:
+  print("strange erroe create socket %s" % e)
   sys.exit(1)
 
 
@@ -18,7 +18,7 @@ try:
 except ValueError:
   try:
     port=socket.getservbyname(textport,'tcp')
-  except socket.error,e:
-    print "could find you port %s" % e
+  except socket.error as e:
+    print("could find you port %s" % e)
     sys.exit(1)
 

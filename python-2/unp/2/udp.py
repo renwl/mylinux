@@ -15,12 +15,12 @@ except ValueError:
 
 s.connect((host,port))
 
-print "enter data to tranmit:"
+print("enter data to tranmit:")
 
 data=sys.stdin.readline().strip()
 s.sendall(data)
 
-print "looking for replies;"
+print("looking for replies;")
 
 while 1:
   buf=s.recv(2048)

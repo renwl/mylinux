@@ -1,9 +1,9 @@
 
 from functools import partial
-import Tkinter
+import tkinter
 
-root=Tkinter.Tk()
-MyButton = partial(Tkinter.Button,root,
+root=tkinter.Tk()
+MyButton = partial(tkinter.Button,root,
                    fg="white",bg="blue")
 b1= MyButton(text="button 1")
 b2=MyButton(text="button 2")
