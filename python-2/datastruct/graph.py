@@ -1,7 +1,7 @@
 def searchGraph(graph,start,end):
     results=[]
     generatePath(graph,[start],end,results)
-    results.sort(lambda x,y:cmp(len(x),len(y)))
+    results.sort()
     return results
 
 def generatePath(graph,path,end,results):

@@ -43,14 +43,27 @@ def selection_sort(collection):
 
 
 if __name__ == '__main__':
-    import sys
-    # For python 2.x and 3.x compatibility: 3.x has not raw_input builtin
-    # otherwise 2.x's input builtin function is too "smart"
-    if sys.version_info.major < 3:
-        input_function = raw_input
-    else:
-        input_function = input
-
-    user_input = input_function('Enter numbers separated by a comma:\n')
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(selection_sort(unsorted))
+		import sys
+		# For python 2.x and 3.x compatibility: 3.x has not raw_input builtin
+		# otherwise 2.x's input builtin function is too "smart"
+		if sys.version_info.major < 3:
+		    input_function = raw_input
+		else:
+		    input_function = input
+		
+		import time                           
+		tstart=time.clock()                   
+		#pdb.set_trace()                      
+		unsorted=list(range(20000,1,-1))      
+		#print(sort(unsorted))                
+		print(selection_sort(unsorted))       
+		tend=time.clock()                     
+		print("read: %f s" % (tend - tstart))	
+		
+		#user_input = input_function('Enter numbers separated by a comma:\n')
+		#unsorted = [int(item) for item in user_input.split(',')]
+		#print(selection_sort(unsorted))
+    
+    
+    
+    

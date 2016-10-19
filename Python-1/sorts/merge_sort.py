@@ -29,11 +29,14 @@ def merge_sort(collection):
     >>> merge_sort([-2, -5, -45])
     [-45, -5, -2]
     """
+    #print("collection=",collection)
     length = len(collection)
     if length > 1:
         midpoint = length // 2
         left_half = merge_sort(collection[:midpoint])
-        right_half = merge_sort(collection[midpoint:])
+        #print("left_half=	",left_half)
+        right_half = merge_sort(collection[midpoint:])   
+        #print("right_half=	",right_half)
         i = 0
         j = 0
         k = 0
@@ -62,15 +65,28 @@ def merge_sort(collection):
 
 
 if __name__ == '__main__':
-    import sys
-
-    # For python 2.x and 3.x compatibility: 3.x has not raw_input builtin
-    # otherwise 2.x's input builtin function is too "smart"
-    if sys.version_info.major < 3:
-        input_function = raw_input
-    else:
-        input_function = input
-
-    user_input = input_function('Enter numbers separated by a comma:\n')
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(merge_sort(unsorted))
+		import sys
+		
+		# For python 2.x and 3.x compatibility: 3.x has not raw_input builtin
+		# otherwise 2.x's input builtin function is too "smart"
+		if sys.version_info.major < 3:
+		    input_function = raw_input
+		else:
+		    input_function = input
+		
+		import time                           
+		tstart=time.clock()                   
+		#pdb.set_trace()                      
+		unsorted=list(range(10000000,1,-1))      
+		#print(sort(unsorted))                
+		#print(merge_sort(unsorted)) 
+		merge_sort(unsorted)      
+		tend=time.clock()                     
+		print("read: %f s" % (tend - tstart))	
+		#user_input = input_function('Enter numbers separated by a comma:\n')
+		#unsorted = [int(item) for item in user_input.split(',')]
+		#print(merge_sort(unsorted))
+    
+    
+    
+    

@@ -1,0 +1,46 @@
+#! /usr/bin/env python
+import sys
+import os
+import re
+if len(sys.argv) < 2:
+	LocalPath=r'./'
+else:
+	if os.path.isdir(sys.argv[1]):
+		if re.search(r'/$',sys.argv[1]):
+			LocalPath=sys.argv[1]
+		else:
+			LocalPath=sys.argv[1] + '/'
+	else:
+		print "please input right path!"
+allfile=os.listdir(LocalPath)
+sum=0	
+for f in allfile:
+	f=LocalPath + f
+	if os.path.isfile(f):
+		FileSize=os.path.getsize(f)
+		sum=sum+FileSize
+		if 1e9 > FileSize > 5e8:
+			print f + "\'s file size is:",FileSize/1024**2, "MB"
+		elif FileSize >= 1e9:
+			print f + "\'s file size is:",FileSize/1024**3, "GB"
+	elif os.path.isdir(f):
+		FileSize1=os.popen(r'du -s ' + f).readline()
+		#print FileSize1
+		tmp=re.split(r'\t',FileSize1)
+		#FileSize=os.path.getsize(f)
+		#print f + "  this dir =  " , tmp[0]
+		FileSize=float(tmp[0]) * 1024
+		#print f + "  this dir =  " , FileSize
+		sum=sum+FileSize
+		if 1e9 > FileSize > 5e8:
+			print f + "\'s file size is:",FileSize/1024**2, "MB"
+		elif FileSize >= 1e9:
+			print f + "\'s file size is:",FileSize/1024**3, "GB"
+if 1e6 <= sum <1e9: 
+	print "total size is : ", sum/1024**2,"MB"
+elif sum >= 1e9:
+	print "total size is : ", sum/1024**3,"GB"
+else:
+	print "total size is : ", sum
+
+

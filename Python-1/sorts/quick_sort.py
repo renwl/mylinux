@@ -11,7 +11,7 @@ python quick_sort.py
 """
 from __future__ import print_function
 from random import shuffle
-
+import time
 
 def sort(collection):
     shuffle(collection)
@@ -61,6 +61,11 @@ if __name__ == '__main__':
     else:
         input_function = input
 
-    user_input = input_function('Enter numbers separated by a comma:\n')
-    unsorted = [int(item) for item in user_input.split(',')]
-    print(sort(unsorted))
+    #user_input = input_function('Enter numbers separated by a comma:\n')
+    #unsorted = [int(item) for item in user_input.split(',')]
+    tstart=time.clock()
+    unsorted=list(range(500,1,-1))
+    #print(sort(unsorted))
+    print(quick_sort(unsorted))
+    tend=time.clock()
+    print("read: %f s" % (tend - tstart))

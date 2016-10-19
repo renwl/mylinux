@@ -11,7 +11,7 @@ python bubble_sort.py
 """
 
 from __future__ import print_function
-
+import time
 
 def bubble_sort(collection):
     """Pure implementation of bubble sort algorithm in Python
@@ -41,6 +41,7 @@ def bubble_sort(collection):
 
 if __name__ == '__main__':
     import sys
+    '''
     # For python 2.x and 3.x compatibility: 3.x has not raw_input builtin
     # otherwise 2.x's input builtin function is too "smart"
     if sys.version_info.major < 3:
@@ -50,4 +51,9 @@ if __name__ == '__main__':
 
     user_input = input_function('Enter numbers separated by a comma:\n')
     unsorted = [int(item) for item in user_input.split(',')]
+    '''
+    tstart=time.clock()
+    unsorted=list(range(10000,1,-1))
     print(bubble_sort(unsorted))
+    tend=time.clock()
+    print("read: %f s" % (tend - tstart))

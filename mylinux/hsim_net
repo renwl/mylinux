@@ -1,0 +1,25 @@
+#! /usr/bin/env python
+import sys
+import os
+import re
+if len(sys.argv) < 2:
+	print "please input simulation filename!"
+else:
+	f1=open(sys.argv[1],'r')
+	LocData1=f1.readlines()
+	LocData2=[]
+	f1.close()
+	f2=open(r'./temp.txt','w')
+	for eachline in LocData1:
+		if re.search('\.ends\s+',eachline):
+			if re.search('\.subckt\s+',LocData2[-1]):
+				LocData2.pop()
+			else:
+				LocData2.append(eachline)
+		elif re.search('\.END$',eachline):
+			LocData2.pop()
+		else:
+			LocData2.append(eachline)
+	for eachline in LocData2:
+		f2.write(eachline)
+	f2.close()
