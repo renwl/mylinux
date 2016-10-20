@@ -5,6 +5,7 @@ import os
 import re
 import shutil
 from NetChange import *
+from FileSize import *
 
 if len(sys.argv) < 2:
 	print "please input simulation filename!"
@@ -105,8 +106,15 @@ else:
 		"""
 		SrcPath=SimFile[0] + r".raw/tran.tran"
 		TarPath=SimFile[0] + r".raw/tran_" + str(StartIndex) +  ".tran"
+		#SrcPath1=SimFile[0] + r".raw/"
 		shutil.copyfile(SrcPath,TarPath)
 		StartIndex+=1
 		f=open(SimFile[0] + r"_IndexList.txt","w")
 		f.write("index=" + str(StartIndex))
 		f.close()
+		f_size=filesize(".")
+		if f_size > 50e6:
+			print "overflow",f_size
+			input("continue?")
+		else:
+			print "safe",f_size 
