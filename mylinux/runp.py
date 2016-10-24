@@ -60,7 +60,7 @@ else:
 	for patternline in PatternData:
 		if int(patternline["index"]) < StartIndex:
 			continue
-		print "index=",patternline["index"]
+		#print "index=",patternline["index"]
 		f_sim=open(sys.argv[1])
 		LData=[]
 		tt=""
@@ -71,6 +71,8 @@ else:
 						continue
 					else:
 						tt=ParCh(parkey,patternline[parkey],eachline)
+						eachline=tt
+						#print "tt=",tt
 				LData.append(tt)
 			elif re.search("temp=",eachline):
 				tt=ParCh("temp",patternline["temp"],eachline)
@@ -85,25 +87,9 @@ else:
 		for i in LData:
 			f1.write(i)
 		f1.close()
-
 		LocalPath=r'spectre ++aps +mt=4 -format psfbin ./' + SimPath[-1]
 		os.system(LocalPath)
-		"""	
 		
-		f=open(temp[0] + r".csv","a")
-		f.write("gain=" + l[0] + " vdd=" + l[1] + " temp=" + l[2] + " corner=" + l[3])
-		f1=open(temp[0] + r'.measure')
-		TempData=[]
-		for i in f1:
-			if re.search("^\s*$",i) or re.search(r":",i):
-				pass
-			else:
-				TempData.append(i)
-		for i in TempData:
-			f.write(i)
-		f.close()
-		f1.close()
-		"""
 		SrcPath=SimFile[0] + r".raw/tran.tran"
 		TarPath=SimFile[0] + r".raw/tran_" + str(StartIndex) +  ".tran"
 		#SrcPath1=SimFile[0] + r".raw/"
@@ -117,4 +103,4 @@ else:
 			print "overflow",f_size
 			input("continue?")
 		else:
-			print "safe",f_size 
+			print "safe",f_size
