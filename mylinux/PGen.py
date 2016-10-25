@@ -1,20 +1,20 @@
 #! /usr/bin/env python
 import sys
-sys.path.append("./mypy")
+#sys.path.append("./mypy")
 import os
 import re
-from NetChange import *
+#from NetChange import *
 SimCond={}
 SimCond["temp"]=[-40,27,85]
 SimCond["cor"]=["snfp","ss","tt","ff"]
 SimCond["vdd"]=[1.4,1.5]
-SimCond["gain"]=[i*1e-3 for i in range(1,11,1)]
-SimCond["rl"]=[2.1e3,3.1e3]
+SimCond["gain"]=[i*1e-1 for i in range(1,5,1)]
+#SimCond["rl"]=[2.1e3,3.1e3]
 
 
 
 if len(sys.argv) < 2:
-	print "please input simulation filename!"
+	print( "please input simulation filename!")
 else:
 	filename=sys.argv[1].split(r".")[0]
 	#print "filename=",filename
@@ -34,11 +34,20 @@ else:
 		for paridx in range(0,lenpar,1):
 			strtemp="index," + str(paridx)
 			ParTemp[paridx]=[strtemp]
+		StartMark=0
+		lentemp1=1
 		for keys in SimCond:
 			lentemp=len(SimCond[keys])
 			for i in ParTemp:
-				strtemp=keys + "," + str(SimCond[keys][i%lentemp])
-				ParTemp[i].append(strtemp)	
+				if StartMark==0:
+					strtemp=keys + "," + str(SimCond[keys][i%lentemp])
+					ParTemp[i].append(strtemp)	
+				else:
+					strtemp=keys + "," + str(SimCond[keys][(i//lentemp1)%lentemp])
+					ParTemp[i].append(strtemp)	
+				if i==lenpar - 1:
+					StartMark=1
+					lentemp1*=lentemp
 		for keys in ParTemp:
 			strtemp=",".join(ParTemp[keys]) + ";\n"
 			#print keys,"------",strtemp
