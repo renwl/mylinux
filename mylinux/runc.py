@@ -91,17 +91,26 @@ else:
 		LocalPath=LocalPath + r" -measure " + SimFile[0] + r'.measure'
 		os.system(LocalPath)
 
-		f=open(temp[0] + r".csv","a")
-		f.write("gain=" + l[0] + " vdd=" + l[1] + " temp=" + l[2] + " corner=" + l[3])
-		f1=open(temp[0] + r'.measure')
-		TempData=[]
+		f=open(SimFile[0] + r".csv","a")
+		f1=open(SimFile[0] + r'.measure')
+		MeasData=["start"]
 		for i in f1:
-			if re.search("^\s*$",i) or re.search(r":",i):
+			temp=re.sub(r"\s+"," ",i)
+			temp1=re.sub(r"^\s+","",temp)
+			temp2=re.sub(r"\s",",",temp1)
+			if re.search("^\s*$",temp2):
 				pass
+			elif re.search("^[a-zA-Z]",temp2):
+				if SimChoice==1:
+					MeasData.pop(0)
+					MeasData.append(temp2 + "\n")
+				else:
+					pass
 			else:
-				TempData.append(i)
-		for i in TempData:
+				MeasData.append(temp2 + "\n")	
+		for i in MeasData:
 			f.write(i)
+			#f.write(patternline + "," + i)
 		f.close()
 		f1.close()
 	
