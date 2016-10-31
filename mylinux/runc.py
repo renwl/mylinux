@@ -93,7 +93,7 @@ else:
 
 		f=open(SimFile[0] + r".csv","a")
 		f1=open(SimFile[0] + r'.measure')
-		MeasData=["start"]
+		MeasData=[]
 		for i in f1:
 			temp=re.sub(r"\s+"," ",i)
 			temp1=re.sub(r"^\s+","",temp)
@@ -101,13 +101,22 @@ else:
 			if re.search("^\s*$",temp2):
 				pass
 			elif re.search("^[a-zA-Z]",temp2):
-				if SimChoice==1:
-					MeasData.pop(0)
-					MeasData.append(temp2 + "\n")
+				if SimChoice==1 and int(patternline["index"])==0:
+					temp3=[]
+					for parkey in patternline:
+						temp3.append(parkey)
+					ResultLine=",".join(temp3) + "," + temp2
+					if len(MeasData):
+						MeasData.pop(0)
+					MeasData.append(ResultLine + "\n")
 				else:
 					pass
 			else:
-				MeasData.append(temp2 + "\n")	
+				temp3=[]
+				for parkey in patternline:
+					temp3.append(str(patternline[parkey]))
+				ResultLine=",".join(temp3) + "," + temp2
+				MeasData.append(ResultLine + "\n")
 		for i in MeasData:
 			f.write(i)
 			#f.write(patternline + "," + i)
