@@ -44,6 +44,32 @@ else:
 		f_sim.write(i)
 	f_sim.close()
 
+	f_sim=open(sys.argv[1])
+	LData=[]
+	tt=""
+	EscFlag=0
+	for eachline in f_sim:
+		if re.search("^parameters",eachline) and EscFlag==0:
+			if re.search(r"\\$",eachline):
+				EscFlag=1
+				tt=re.sub(r"\\$"," ",eachline)
+				tt=re.sub(r"\n","",tt)
+				continue
+			else:
+				LData.append(eachline)
+		elif EscFlag==1:
+			if re.search(r"\\$",eachline):
+				input("please change the source file by hand!")
+			else:
+				EscFlag=0
+				LData.append(tt + eachline)
+		else:
+			LData.append(eachline)
+	f_sim.close()
+	f_sim=open(sys.argv[1],"w")
+	for i in LData:
+		f_sim.write(i)
+	f_sim.close()
 	PatternData=[]
 	f=open(SimFile[0] + r"_CorList.txt","r")
 	for i in f:
