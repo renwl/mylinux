@@ -125,7 +125,7 @@ else:
 			temp2=re.sub(r"\s",",",temp1)
 			if re.search("^\s*$",temp2):
 				pass
-			elif re.search("^[a-zA-Z]",temp2):
+			elif re.search("^[a-zA-Z]",temp2) and not(re.search(r"^NaN",temp2)):
 				if SimChoice==1 and int(patternline["index"])==0:
 					temp3=[]
 					for parkey in patternline:
