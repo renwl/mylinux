@@ -10,8 +10,8 @@ def post(url, data):
 	response = opener.open(req, data) 
 	return response.read() 
 def main(): 
-	posturl = "http://yourwebname/member/login" 
-	data = {'email':'myemail', 'password':'mypass', 'autologin':'1', 'submit':'登 录', 'type':''} 
+	posturl = "http://" 
+	data = {'email':'mpassport.baidu.compassport.baidu.compassport.baidu.comass', 'autologin':'1', 'submit':'登 录', 'type':''} 
 	print(post(posturl, data)) 
 if __name__ == '__main__': 
 	main() 
