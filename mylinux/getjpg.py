@@ -17,7 +17,7 @@ def getImg(html):
 	for imgurl in imglist:
 		print("list=",imgurl)
 		time.sleep(1)
-		urllib.request.urlretrieve(imgurl,'%s.jpg' % x)
+		urllib.request.urlretrieve(imgurl,r'e:\%s.jpg' % x)
 		x+=1
 		
 		
