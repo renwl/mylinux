@@ -9,6 +9,8 @@ Desktop.ini
 *.so
 *.egg
 *.egg-info
+*.dat
+*.dir
 dist
 build
 
