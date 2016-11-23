@@ -10,4 +10,4 @@ class LazyImport:
 			self.module = __import__(self.module_name)
 		return getattr(self.module, name)
 string = LazyImport("string")
-print(dir(string))
+print((dir(string)))
