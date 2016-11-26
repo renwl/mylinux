@@ -1,5 +1,5 @@
 import os
-import string
+import re
 
 def replace(file, search_for, replace_with):
     # replace strings in a text file
@@ -17,7 +17,8 @@ def replace(file, search_for, replace_with):
     fo = open(temp, "w")
 
     for s in fi.readlines():
-        fo.write(string.replace(s, search_for, replace_with))
+        #fo.write(string.replace(s, search_for, replace_with))
+        fo.write(re.sub(search_for, replace_with,s))
 
     fi.close()
     fo.close()
@@ -37,7 +38,7 @@ def replace(file, search_for, replace_with):
 #
 # try it out!
 
-file = "samples/sample.txt"
+file = r"E:\data\rxn_hsim.pwl"
 
-replace(file, "hello", "tjena")
-replace(file, "tjena", "hello")
+replace(file, "design", "verycd")
+replace(file, "name", "donkey")

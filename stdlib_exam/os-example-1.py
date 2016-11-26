@@ -1,7 +1,8 @@
 import os
 import time
 
-file = "samples/sample.jpg"
+#file = r"e:\1.jpg"
+file = r"e:\dd.gif"
 
 def dump(st):
     mode, ino, dev, nlink, uid, gid, size, atime, mtime, ctime = st

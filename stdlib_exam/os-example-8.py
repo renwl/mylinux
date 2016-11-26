@@ -1,9 +1,13 @@
 import os
 
 if os.name == "nt":
-    command = "dir"
+	print("nt")
+	command = "dir"
 else:
-    command = "ls -l"
+	print("linux")
+	command = "ls -l"
+
+input("haha")
 
 os.system(command)
     

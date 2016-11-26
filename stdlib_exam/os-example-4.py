@@ -5,7 +5,7 @@ cwd = os.getcwd()
 print("1", cwd)
 
 # go down
-os.chdir("samples")
+os.chdir(r"../")
 print("2", os.getcwd())
 
 # go back up

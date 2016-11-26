@@ -1,19 +1,19 @@
 import os
 import stat, time
 
-infile = "samples/sample.jpg"
-outfile = "out.jpg"
+infile = r"e:\1.jpg"
+outfile = r"e:\out.jpg"
 
 # copy contents
 fi = open(infile, "rb")
 fo = open(outfile, "wb")
 
 while 1:
-    s = fi.read(10000)
+    s = fi.read(10)
     if not s:
         break
     fo.write(s)
-
+    
 fi.close()
 fo.close()
 

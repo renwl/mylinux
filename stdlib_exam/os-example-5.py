@@ -1,6 +1,6 @@
 import os
 
-for file in os.listdir("samples"):
+for file in os.listdir(r"./"):
     print(file)
 
 ## sample.au

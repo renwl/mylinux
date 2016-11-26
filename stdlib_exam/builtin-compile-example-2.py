@@ -1,5 +1,5 @@
 BODY = """
-print 'the ant, an introduction'
+print('the ant, an introduction')
 """
 
 code = compile(BODY, "<script>", "exec")
