@@ -1,11 +1,12 @@
 import stat
 import os, time
 
-st = os.stat("samples/sample.txt")
+st = os.stat("rfc868.txt")
 
 print("mode", "=>", oct(stat.S_IMODE(st[stat.ST_MODE])))
 
 print("type", "=>", end=' ')
+#print("type", "=>")
 if stat.S_ISDIR(st[stat.ST_MODE]):
     print("DIRECTORY", end=' ')
 if stat.S_ISREG(st[stat.ST_MODE]):

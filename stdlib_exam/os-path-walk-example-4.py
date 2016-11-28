@@ -24,6 +24,8 @@ class DirectoryStatWalker:
                 fullname = os.path.join(self.directory, file)
                 st = os.stat(fullname)
                 mode = st[stat.ST_MODE]
+                print("st=",st)
+                print("mode=",mode)
                 if stat.S_ISDIR(mode) and not stat.S_ISLNK(mode):
                     self.stack.append(fullname)
                 return fullname, st
