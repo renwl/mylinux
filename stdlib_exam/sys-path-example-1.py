@@ -2,9 +2,11 @@ import sys
 
 print("path has", len(sys.path), "members")
 
-# add the sample directory to the path
-sys.path.insert(0, "samples")
-import sample
+# add the sample directory to the 
+
+sys.path.insert(0, "mylinux")
+print("sys path is :",sys.path)
+import hello
 
 # nuke the path
 sys.path = []
