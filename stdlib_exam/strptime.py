@@ -47,6 +47,7 @@ class TimeParser:
         except KeyError:
             raise ValueError("unknown specificer: %s" % spec)
         #self.pattern = re.compile("(?i)" + string.join(pattern, ""))
+        print("pattern=",pattern)
         self.pattern = re.compile("(?i)" + "".join(pattern))
         print("self.pattern=",self.pattern)
     def match(self, daytime):
