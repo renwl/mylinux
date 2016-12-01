@@ -35,7 +35,9 @@ SPEC = {
 class TimeParser:
     def __init__(self, format):
         # convert strptime format string to regular expression
-        format = string.join(re.split("(?:\s|%t|%n)+", format))
+        #format = string.join(re.split("(?:\s|%t|%n)+", format))
+        format = "".join(re.split("(?:\s|%t|%n)+", format))
+        print("format=",format)
         pattern = []
         try:
             for spec in re.findall("%\w|%%|.", format):
@@ -44,10 +46,14 @@ class TimeParser:
                 pattern.append(spec)
         except KeyError:
             raise ValueError("unknown specificer: %s" % spec)
-        self.pattern = re.compile("(?i)" + string.join(pattern, ""))
+        #self.pattern = re.compile("(?i)" + string.join(pattern, ""))
+        self.pattern = re.compile("(?i)" + "".join(pattern))
+        print("self.pattern=",self.pattern)
     def match(self, daytime):
         # match time string
+        print("string=",daytime)
         match = self.pattern.match(daytime)
+        print("match=",match)
         if not match:
             raise ValueError("format mismatch")
         get = match.groupdict().get
