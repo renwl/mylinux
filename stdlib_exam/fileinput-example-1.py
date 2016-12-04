@@ -1,7 +1,7 @@
 import fileinput
 import sys
 
-for line in fileinput.input("samples/sample.txt"):
+for line in fileinput.input("rfc868.txt"):
     sys.stdout.write("-> ")
     sys.stdout.write(line)
 

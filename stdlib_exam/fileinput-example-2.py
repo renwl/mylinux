@@ -2,10 +2,10 @@ import fileinput
 import glob
 import string, sys
 
-for line in fileinput.input(glob.glob("samples/*.txt")):
+for line in fileinput.input(glob.glob("./*.txt")):
     if fileinput.isfirstline(): # first in a file?
         sys.stderr.write("-- reading %s --\n" % fileinput.filename())
-    sys.stdout.write(str(fileinput.lineno()) + " " + string.upper(line))
+    sys.stdout.write(str(fileinput.lineno()) + " " + line.upper())
 
 ## -- reading samples\sample.txt --
 ## 1 WE WILL PERHAPS EVENTUALLY BE WRITING ONLY SMALL

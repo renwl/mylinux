@@ -11,7 +11,7 @@ for i in range(1000):
 # print the histogram
 m = max(histogram)
 for v in histogram:
-    print("*" * (v * 50 / m))
+    print("*" * int(v * 50 / m))
 
 ##
 ## ****

@@ -14,7 +14,9 @@ world's start. -- National Geographic, May 1997
 
 sys.stdout = stdout
 
-print(string.upper(file.getvalue()))
+#print(string.upper(file.getvalue()))
+
+print((file.getvalue()).upper())
 
 ## ACCORDING TO GBAYA FOLKTALES, TRICKERY AND GUILE
 ## ARE THE BEST WAYS TO DEFEAT THE PYTHON, KING OF
