@@ -1,7 +1,7 @@
 import zlib
 import glob
 
-for file in glob.glob("samples/*"):
+for file in glob.glob("e:/*.jpg"):
 
     indata = open(file, "rb").read()
     outdata = zlib.compress(indata, zlib.Z_BEST_COMPRESSION)

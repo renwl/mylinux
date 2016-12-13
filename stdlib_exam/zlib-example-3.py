@@ -2,9 +2,9 @@ import zlib
 
 encoder = zlib.compressobj()
 
-data = encoder.compress("life")
-data = data + encoder.compress(" of ")
-data = data + encoder.compress("brian")
+data = encoder.compress(b"life")
+data = data + encoder.compress(b" of ")
+data = data + encoder.compress(b"brian")
 data = data + encoder.flush()
 
 print(repr(data))

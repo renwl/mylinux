@@ -8,22 +8,24 @@ SCRIPT = [
     "  2,",
     "  3 ",
     ")",
-    "print a"
+    "print(a)"
 ]
 
 script = ""
 
 for line in SCRIPT:
-    script = script + line + "\n"
-    co = code.compile_command(script, "<stdin>", "exec")
-    if co:
-        # got a complete statement.  execute it!
-        print("-"*40)
-        print(script, end=' ')
-        print("-"*40)
-        exec(co)
-        script = ""
-
+	print("line=	",line)
+	script = script + line + "\n"
+	print("script=	",script, end=' ')
+	co = code.compile_command(script, "<stdin>", "exec")
+	if co:
+		# got a complete statement.  execute it!
+		print("-"*40)
+		print(script, end=' ')
+		print("-"*40)
+		exec(co)
+		script = ""
+	
 ## ----------------------------------------
 ## a = (
 ##   1,

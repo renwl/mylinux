@@ -1,6 +1,6 @@
 import zlib
 
-MESSAGE = "life of brian"
+MESSAGE = b"life of brian"
 
 compressed_message = zlib.compress(MESSAGE)
 decompressed_message = zlib.decompress(compressed_message)
