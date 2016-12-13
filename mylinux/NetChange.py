@@ -3,7 +3,7 @@ this module can change the netlist's parameter
 """
 import re
 def ParCh(x,y,z):
-	temp1=x + "=" +r"[-]?[+]?\d*[.]?\d*[e]?[-]?[+]?\d*[kmMGnu]?"
+	temp1=x + "=" +r"[-]?[+]?\d*[.]?\d*[e]?[-]?[+]?\d*[kmMGnupPfF]?"
 	temp2=x + "=" + str(y)
 	return re.sub(temp1,temp2,z)
 

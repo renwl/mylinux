@@ -9,8 +9,8 @@ print(b)
 
 # modify original
 a[0][0] = 0
+#a[1][0] = None
 a[1] = None
-
 print("after", "=>")
 print(a)
 print(b)
