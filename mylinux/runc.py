@@ -1,11 +1,13 @@
 #! /usr/bin/env python
+import time
+StartTime=time.time()
 import sys
 sys.path.append("./mypy")
 import os
 import re
 from NetChange import *
 from FileSize import *
-
+Tcount=0
 if len(sys.argv) < 2:
 	print "please input simulation filename!"
 else:
@@ -82,6 +84,7 @@ else:
 		#PatternData=f.readlines()
 	f.close()
 	for patternline in PatternData:
+		SingleRunStart=time.time()
 		if int(patternline["index"]) < StartIndex:
 			continue
 		#print "index=",patternline["index"]
@@ -112,7 +115,8 @@ else:
 			f1.write(i)
 		f1.close()
 
-		LocalPath=r'spectremdl ++aps +mt=4 -format psfbin -batch ' + SimFile[0] + '_runc.mdl -tab -design ./' + SimPath[-1]
+		#LocalPath=r'spectremdl ++aps +mt=4 -format psfbin -batch ' + SimFile[0] + '_runc.mdl -tab -design ./' + SimPath[-1]
+		LocalPath=r'spectremdl +mt=1 -format psfbin -batch ' + SimFile[0] + '_runc.mdl -tab -design ./' + SimPath[-1]
 		LocalPath=LocalPath + r" -measure " + SimFile[0] + r'.measure'
 		os.system(LocalPath)
 
@@ -152,9 +156,31 @@ else:
 		f=open(SimFile[0] + r"_IndexList.txt","w")
 		f.write("index=" + str(StartIndex))
 		f.close()
-		f_size=filesize(".")
-		if f_size > 50e6:
-			print "overflow",f_size
-			input("continue?")
+		if Tcount==0:
+			TranPath=r"./" + SimFile[0] + r'.raw'
+			print "simulation result path=",TranPath
+			TranSize=filesize(TranPath)
+			print "simulation result size=",TranSize
+			Tcount=1
+		now=time.time()
+		print "total time=",now - StartTime
+		print "single run time=",now - SingleRunStart
+		if TranSize <= 5e5:
+			pass
+		elif ((5e5 < TranSize <= 1e6) and ((now - StartTime) > (Tcount * 3600))):
+			Tcount+=1
+			f_size=filesize(".")
+			if f_size > 50e6:
+				print "overflow",f_size
+				input("continue?")
+			else:
+				print "safe",f_size
+		elif TranSize > 1e6:
+			f_size=filesize(".")
+			if f_size > 50e6:
+				print "overflow",f_size
+				input("continue?")
+			else:
+				print "safe",f_size	
 		else:
-			print "safe",f_size
+			pass

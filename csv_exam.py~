@@ -1,0 +1,37 @@
+# coding: utf-8
+'''
+python中对csv文件的处理，可以用一般文件读取的方式来进行，
+也可以用csv模块来进行。
+本例子就是给出用csv模块来进行处理的解释说明。
+'''
+import csv
+#1. 写入并生成csv文件
+#代码：
+csvfile = open('csv_test.csv', 'wb')
+writer = csv.writer(csvfile)
+writer.writerow(['姓名', '年龄', '电话'])
+data = [
+    ('小河', '25', '1234567'),
+    ('小芳', '18', '789456')
+]
+writer.writerows(data)
+csvfile.close()
+'''
+wb中的w表示写入模式，b是文件模式
+写入一行用writerow
+多行用writerows
+2. 读取csv文件
+代码：
+'''
+csvfile = open('csv_test.csv', 'rb')
+reader = csv.reader(csvfile)
+for line in reader:
+    print(line)
+csvfile.close()
+'''
+运行结果：
+root@he-desktop:~/python/example# python read_csv.py
+['\xe5\xa7\x93\xe5\x90\x8d', '\xe5\xb9\xb4\xe9\xbe\x84', '\xe7\x94\xb5\xe8\xaf\x9d']
+['\xe5\xb0\x8f\xe6\xb2\xb3', '25', '1234567']
+['\xe5\xb0\x8f\xe8\x8a\xb3', '18', '789456']
+'''
